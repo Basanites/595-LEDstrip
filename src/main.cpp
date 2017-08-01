@@ -17,15 +17,15 @@ void setup() {
 }
 
 void loop() {
+  runLed(true);
+  runLed(false);
+}
+
+void runLed(bool up) {
+  uint8_t direction = up ? MSBFIRST : LSBFIRST
   for (size_t i = 0; i < 8; i++) {
     digitalWrite(latchPin, LOW);
-    shiftOut(dataPin, clockPin, MSBFIRST, 1 << i);
-    digitalWrite(latchPin, HIGH);
-    delay(100);
-  }
-  for (size_t i = 0; i < 8; i++) {
-    digitalWrite(latchPin, LOW);
-    shiftOut(dataPin, clockPin, MSBFIRST, 128 >> i);
+    shiftOut(dataPin, clockPin, direction, 1 << i);
     digitalWrite(latchPin, HIGH);
     delay(100);
   }
