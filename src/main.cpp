@@ -1,5 +1,8 @@
 #include "Arduino.h"
 
+#define UP true
+#define DOWN false
+
 uint8_t dataPin = 8;
 uint8_t clockPin = 9;
 uint8_t latchPin = 10;
@@ -27,6 +30,6 @@ void runLed(bool up) {
 }
 
 void loop() {
-  runLed(true);
-  runLed(false);
+  runLed(UP);
+  runLed(DOWN);
 }
